@@ -12,6 +12,7 @@ tab1, tab2, tab3 = st.tabs(["Transacciones", "Cuentas", "Categorías"])
 
 # Funciones para Transacciones
 with tab1:
+    
     st.subheader("Gestión de Transacciones")
 
     # Submenú dentro de la pestaña
@@ -21,7 +22,7 @@ with tab1:
     if transaction_action == "Agregar":
         st.write("Formulario para agregar una transacción")
         tipo = st.selectbox("Tipo de transacción", ["Gasto", "Ingreso"], key="transacciones_tipo")
-        monto = st.number_input("Monto", min_value=0.01, key="transacciones_monto")
+        monto = st.number_input("Monto", min_value=1, key="transacciones_monto")
         fecha = st.date_input("Fecha de la transacción", key="transacciones_fecha").strftime('%Y-%m-%d')
         descripcion = st.text_area("Descripción", key="transacciones_descripcion")
         

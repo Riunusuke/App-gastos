@@ -1,5 +1,5 @@
 from firebase_config import db
-
+import streamlit as st
 #### Transacciones
 
 # Add: Agregar una transacción
@@ -84,14 +84,9 @@ def get_accounts():
 # Update: Actualizar una cuenta
 def update_account(id, nombre=None, tipo=None, descripcion=None):
     doc_ref = db.collection('cuentas').document(id)
-    data = {}
-    if nombre:
-        data['nombre'] = nombre
-    if tipo:
-        data['tipo'] = tipo
-    if descripcion:
-        data['descripcion'] = descripcion
     
+    data = {'nombre': nombre, 'tipo': tipo, 'descripcion': descripcion}
+
     doc_ref.update(data)
 
 # Delete: Eliminar una cuenta
