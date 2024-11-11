@@ -2,6 +2,7 @@ import streamlit as st
 from expense_manager import add_transaction, get_transaction, update_transaction, delete_transaction
 from expense_manager import add_account, get_account, get_accounts, update_account, delete_account
 from expense_manager import add_category, get_category, get_categories, update_category, delete_category
+from datetime import date
 
 # Título de la aplicación
 st.title("App de Gastos Personales")
@@ -21,7 +22,7 @@ with tab1:
         st.write("Formulario para agregar una transacción")
         tipo = st.selectbox("Tipo de transacción", ["Gasto", "Ingreso"], key="transacciones_tipo")
         monto = st.number_input("Monto", min_value=0.01, key="transacciones_monto")
-        fecha = st.date_input("Fecha de la transacción", key="transacciones_fecha")
+        fecha = st.date_input("Fecha de la transacción", key="transacciones_fecha").strftime('%Y-%m-%d')
         descripcion = st.text_area("Descripción", key="transacciones_descripcion")
         
         # Obtener las cuentas y categorías desde Firebase para seleccionarlas
